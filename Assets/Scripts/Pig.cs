@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Pig : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
+        if (collision.transform.CompareTag("Ground"))
+        {
+            GetComponentInParent<PigsManager>().RegisterPigDestroy();
+            Destroy(gameObject);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }

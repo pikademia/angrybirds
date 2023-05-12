@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class PigsManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    GameManager gameManager;
+    int pigsTotal;
+    int pigsDestroyed = 0;
+
     void Start()
     {
-        
+        gameManager = FindObjectOfType<GameManager>();
+        pigsTotal = transform.childCount;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RegisterPigDestroy()
     {
-        
+        pigsDestroyed++;
+  
+        if(pigsDestroyed == pigsTotal)
+        {
+            if(gameManager != null)
+            {
+                gameManager.SwitchScene();
+            }
+        }
     }
 }
